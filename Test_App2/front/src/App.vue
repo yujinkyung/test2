@@ -1,10 +1,22 @@
 <template>
   <div id="app">
+    <!-- navbar(헤더) -->
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <b-navbar type="dark" variant="primary">
+        <b-navbar-brand href="/">Matching Monster</b-navbar-brand>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item href="/">Companies</b-nav-item>
+            <b-nav-item href="/">JopPosting</b-nav-item>
+            <b-nav-item href="/">Login</b-nav-item>
+            <b-nav-item href="/#/individual">Join</b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
-    <router-view/>
+    <div>
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -16,7 +28,7 @@
   text-align: center;
   color: #2c3e50;
 }
-
+/*
 #nav {
   padding: 30px;
 }
@@ -28,5 +40,5 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
