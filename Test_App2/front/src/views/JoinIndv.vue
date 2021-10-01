@@ -1,6 +1,6 @@
 <template>
   <div class="join-indv">
-    <b-form @submit="onSubmit">
+    <b-form @submit="joinIndvUser">
       <b-form-group
       label="Name" label-for="input-name">
         <b-form-input
@@ -59,7 +59,7 @@
         </b-form-group>
         <b-form-group>
           <b-form-input
-          id="input-dept" type="text" v-model="acca.dept"
+          id="input-acca-dept" type="text" v-model="acca.dept"
           placeholder="Enter Department"></b-form-input>
         </b-form-group>
       </b-form-group>
@@ -72,7 +72,7 @@
         </b-form-group>
         <b-form-group>
           <b-form-input
-          id="input-dept" type="text" v-model="career.dept"
+          id="input-career-dept" type="text" v-model="career.dept"
           placeholder="Enter Department"></b-form-input>
         </b-form-group>
         <b-form-group>
@@ -88,14 +88,16 @@
 </template>
 
 <script>
+import http from "../http-common";
+
   export default {
     name: 'Join-indv',
     data() {
       return{
         form:{
-          name:'', gender:'m',
+          name:'', gender: 0,
           id:'', pw:'',
-          email:'', contact:'', dob:''
+          email:'', contact:'', dob:'', age : 0
         },
         acca: {
           degree:'', school:'', dept:''
@@ -104,8 +106,8 @@
           comapny:'', dept:'', duty:''
         },
         genderOptions: [
-          { text: '남', value: 'm' },
-          { text: '여', value: 'f' }
+          { text: '남', value: 0 },
+          { text: '여', value: 1 }
         ],
         degreeOptions: [
           { text: '대학원', value: 'graduate' },
@@ -117,6 +119,21 @@
       onSubmit(event) {
         event.preventDefault()
         alert(JSON.stringify(this.form))
+      },
+      joinIndvUser(){
+        http
+          .post("/success-join", {
+            p_ID : this.form.id , p_PW : this.form.pw ,
+            name : this.form.name , p_EMAIL : this.form.email ,
+            phone : this.form.contact ,birth_DATE : this.form.dob ,
+            age: this.form.age , gender: this.form.gender
+          })
+          .then(response=>{
+            console.log(response.data);
+          })
+          .catch(e=>{
+            console.log(e);
+          })
       }
     }
   }

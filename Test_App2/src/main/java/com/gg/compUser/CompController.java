@@ -1,4 +1,4 @@
-package com.gg.controller;
+package com.gg.compUser;
 
 import java.util.List;
 
@@ -6,19 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gg.dto.UserDTO;
-import com.gg.service.UserService;
-
 @RestController
-public class UserController {
+public class CompController {
 	@Autowired
-	UserService service;
+	CompService service;
 	
 	@GetMapping("/list")
-	public List<UserDTO> SelectAllFromUser() {
+	public List<CompDTO> SelectAllFromComp() {
 		System.out.println("-----------------------------");
-		System.out.println("hello! Controller..");
+		System.out.println("    Comp Controller..");
 		System.out.println("-----------------------------");
-		return service.userList();
+		return service.compList();
 	}
 }

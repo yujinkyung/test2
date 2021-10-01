@@ -1,4 +1,4 @@
-package com.gg.dto;
+package com.gg.compUser;
 
 import org.apache.ibatis.type.Alias;
 
@@ -10,7 +10,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class UserDTO {
+public class CompDTO {
 	int CO_no;			// 기업 no
 	String COMPANY;		// 회사명
 	String HR;			// HR 담당자명
@@ -18,9 +18,9 @@ public class UserDTO {
 	String categoryID;	// 회사분야
 	String sizeID;		// 회사 규모
 	
-	public UserDTO() {}
+	public CompDTO() {}
 
-	public UserDTO(int CO_no, String COMPANY, String HR, String CO_EMAIL, String categoryID, String sizeID) {
+	public CompDTO(int CO_no, String COMPANY, String HR, String CO_EMAIL, String categoryID, String sizeID) {
 		super();
 		this.CO_no = CO_no;
 		this.COMPANY = COMPANY;
@@ -30,9 +30,8 @@ public class UserDTO {
 		this.sizeID = sizeID;
 	}
 
-	public UserDTO(String COMPANY) {
+	public CompDTO(String COMPANY) {
 		super();
 		this.COMPANY = COMPANY;
 	}
-
 }

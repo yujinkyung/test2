@@ -19,39 +19,39 @@
                 placeholder="기업명/HR담당자/업종/규모"></b-form-input>
              </b-input-group>
            </b-col>
-           <!-- 고객사 목록 table -->
-           <b-row>
+          </b-row>
+         <!-- 고객사 목록 table -->
+          <b-row>
              <b-table hover :items="users" :filter="filter" :fields="fields"></b-table>
              <!-- <b-table-simple>
-               <colgroup>
+              <colgroup>
                 <col span="1" style="width=5%">
                 <col span="1" style="width=45%">
                 <col span="1" style="width=15%">
                 <col span="1" style="width=15%">
                 <col span="1" style="width=15%">
                 <col span="1" style="width=25%">
-               </colgroup>
-               <b-thead>
-                 <b-th>No.</b-th>
-                 <b-th>기업명</b-th>
-                 <b-th>업종</b-th>
-                 <b-th>규모</b-th>
-                 <b-th>HR담당자</b-th>
-                 <b-th>E-mail</b-th>
-               </b-thead>
-               <b-tbody>
-                 <b-tr v-for="user in users" :key="user.co_no">
-                   <b-td>{{user.co_no}}</b-td>
-                   <b-td>{{user.company}}</b-td>
-                   <b-td>{{user.categoryID}}</b-td>
-                   <b-td>{{user.sizeID}}</b-td>
-                   <b-td>{{user.hr}}</b-td>
-                   <b-td>{{user.co_EMAIL}}</b-td>
-                 </b-tr>
-               </b-tbody>
-             </b-table-simple> -->
-           </b-row>
-         </b-row>
+              </colgroup>
+              <b-thead>
+                <b-th>No.</b-th>
+                <b-th>기업명</b-th>
+                <b-th>업종</b-th>
+                <b-th>규모</b-th>
+                <b-th>HR담당자</b-th>
+                <b-th>E-mail</b-th>
+              </b-thead>
+              <b-tbody>
+                <b-tr v-for="user in users" :key="user.co_no">
+                  <b-td>{{user.co_no}}</b-td>
+                  <b-td>{{user.company}}</b-td>
+                  <b-td>{{user.categoryID}}</b-td>
+                  <b-td>{{user.sizeID}}</b-td>
+                  <b-td>{{user.hr}}</b-td>
+                  <b-td>{{user.co_EMAIL}}</b-td>
+                </b-tr>
+              </b-tbody>
+            </b-table-simple> -->
+          </b-row>
        </b-container>
     </div>
   </div>

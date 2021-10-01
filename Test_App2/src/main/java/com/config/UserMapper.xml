@@ -3,7 +3,13 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="UserMapper"> 
-	<select id="userList" resultType="Company"> 
+	<select id="compList" resultType="Company"> 
 		SELECT * from company; 
-	</select> 
+	</select>
+	
+	<insert id="insertIndv" parameterType="indvUser">
+		INSERT INTO indvDB(P_ID, P_PW, NAME, P_EMAIL, PHONE, BIRTH_DATE, AGE, GENDER)
+		VALUES( #{P_ID}, #{P_PW}, #{NAME}, #{P_EMAIL},
+		 #{PHONE}, #{BIRTH_DATE}, #{AGE}, #{GENDER} )
+	</insert>
 </mapper>
