@@ -57,28 +57,34 @@
 
       <!-- 학력 -->
       <b-form-group label="Academic Career">
-        <b-form-group>
-          <b-form-select v-model="acca.degree" :options="degreeOptions"></b-form-select>
-        </b-form-group>
-        <b-form-group>
-          <b-form-input
-          id="input-school" type="text" v-model="acca.school"
-          placeholder="Enter School Name"></b-form-input>
-        </b-form-group>
-        <b-form-group>
-          <b-form-input
-          id="input-acca-dept" type="text" v-model="acca.dept"
-          placeholder="Enter Department"></b-form-input>
-        </b-form-group>
-        <b-form-group>
-          <b-form-input
-          id="input-acca-ay" type="text" v-model="acca.ay"
-          placeholder="Enter Admission Year"></b-form-input>
-        </b-form-group><b-form-group>
-          <b-form-input
-          id="input-acca-gy" type="text" v-model="acca.gy"
-          placeholder="Enter Graduation Year"></b-form-input>
-        </b-form-group>
+        <b-button variant="primary" @click="addAcademic"> + </b-button>
+        <div v-for="acirow in academicRows" :key="acirow">
+          <b-form-group>
+            <b-form-select v-model="acirow.degree" :options="degreeOptions"></b-form-select>
+          </b-form-group>
+          <b-form-group>
+            <b-form-input
+            id="input-school" type="text" v-model="acirow.school"
+            placeholder="Enter School Name"></b-form-input>
+          </b-form-group>
+          <b-form-group>
+            <b-form-input
+              id="input-academic-dept" type="text" v-model="acirow.dept"
+              placeholder="Enter Department"></b-form-input>
+          </b-form-group>
+          <b-form-group>
+            <b-form-input
+            id="input-academic-ay" type="text" v-model="acirow.ay"
+            placeholder="Enter Admission Year"></b-form-input>
+          </b-form-group>
+          <b-form-group>
+            <b-form-input
+              id="input-academic-gy" type="text" v-model="acirow.gy"
+              placeholder="Enter Graduation Year"></b-form-input>
+          </b-form-group>
+          <b-button variant="danger" @click="removeAcademic"> - </b-button>
+        </div>
+        
       </b-form-group>
 
       <!-- 경력 -->
@@ -108,6 +114,8 @@
 <script>
 import http from "../http-common";
 
+const academicList = [];
+
   export default {
     name: 'Join-indv',
     data() {
@@ -117,12 +125,12 @@ import http from "../http-common";
           id:'', pw:'',
           email:'', contact:'', dob:'', age : 0
         },
-        acca: {
-          degree:'', school:'', dept:'', ay: null , gy: null
-        },
-        career: {
-          company:'', dept:'', duty:''
-        },
+        academicRows: [
+          { degree:'', school:'', dept:'', ay: null , gy: null }
+        ],
+        career: [
+          { company:'', dept:'', duty:'' }
+        ],
         genderOptions: [
           { text: '남', value: 0 },
           { text: '여', value: 1 }
@@ -151,6 +159,18 @@ import http from "../http-common";
             console.log(e);
           })
       },
+      joinAcdemicCareerInfo(){
+        this.matchAcademic();
+        http
+          .post("/success-join-aci", academicList)
+          .then(response=>{
+            console.log(response.data);
+            alert(academicList);
+          })
+          .catch(e=>{
+            console.log(e);
+          })
+      },
       joinCareerInfo(){
         http
           .post("/success-join-ci", {
@@ -164,19 +184,29 @@ import http from "../http-common";
             console.log(e);
           })
       },
-      joinAcdemicCareerInfo(){
-        http
-          .post("/success-join-aci", {
-            p_ID : this.form.id , degree : this.acca.degree,
-            school_NAME : this.acca.school, major : this.acca.dept,
-            admission_YEAR : this.acca.ay, graduation_YEAR : this.acca.gy
-          })
-          .then(response=>{
-            console.log(response.data);
-          })
-          .catch(e=>{
-            console.log(e);
-          })
+      addAcademic: function(){
+        this.academicRows.push({
+          degree:'', school:'', dept:'', ay: null , gy: null
+        })
+      },
+      removeAcademic: function(row){
+        this.academicRows.splice(this.academicRows.indexOf(row),1);
+      },
+      addCareer(){
+
+      },
+      removeCareer(){
+
+      },
+      matchAcademic(){
+        for(var i=0;i<this.academicRows.length;i++){
+          academicList[i] = {p_ID : this.form.id , degree : this.academicRows[i].degree,
+            school_NAME : this.academicRows[i].school, major : this.academicRows[i].dept,
+            admission_YEAR : this.academicRows[i].ay, graduation_YEAR : this.academicRows[i].gy}
+        }
+      },
+      matchCareer(){
+
       }
     }
   }
