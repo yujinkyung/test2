@@ -1,6 +1,8 @@
 <template>
   <div class="join-indv">
     <b-form @submit="joinIndvUser">
+      
+      <!-- 이름 -->
       <b-form-group
       label="Name" label-for="input-name">
         <b-form-input
@@ -8,13 +10,15 @@
         placeholder="Enter Name" required></b-form-input>
       </b-form-group>
 
+      <!-- 성별 -->
       <b-form-group
       label="Gender" label-for="btn-radio-gender">
         <b-form-radio-group
         id="btn-radio-gender" :options="genderOptions" v-model="form.gender"
         button-variant="outline-primary" name="radio-btn-outline" buttons></b-form-radio-group>
       </b-form-group>
-
+      
+      <!-- id / pw -->
       <b-form-group
       label="ID" label-for="input-ID">
         <b-form-input
@@ -29,6 +33,7 @@
         placeholder="Enter Password" required></b-form-input>
       </b-form-group>
 
+      <!-- email -->
       <b-form-group
       label="E-mail" label-for="input-email">
         <b-form-input
@@ -36,6 +41,7 @@
         placeholder="Enter E-mail" required></b-form-input>
       </b-form-group>
 
+      <!-- 연락처 -->
       <b-form-group
       label="Contact" label-for="input-contact">
         <b-form-input
@@ -43,11 +49,13 @@
         placeholder="Enter Contact Information" required></b-form-input>
       </b-form-group>
 
+      <!-- 출생년월일 -->
       <b-form-group
       label="D.O.B" label-for="datepicker-dob">
         <b-form-datepicker id="datepicker-dob" v-model="form.dob" close-button></b-form-datepicker>
       </b-form-group>
 
+      <!-- 학력 -->
       <b-form-group label="Academic Career">
         <b-form-group>
           <b-form-select v-model="acca.degree" :options="degreeOptions"></b-form-select>
@@ -62,8 +70,18 @@
           id="input-acca-dept" type="text" v-model="acca.dept"
           placeholder="Enter Department"></b-form-input>
         </b-form-group>
+        <b-form-group>
+          <b-form-input
+          id="input-acca-ay" type="text" v-model="acca.ay"
+          placeholder="Enter Admission Year"></b-form-input>
+        </b-form-group><b-form-group>
+          <b-form-input
+          id="input-acca-gy" type="text" v-model="acca.gy"
+          placeholder="Enter Graduation Year"></b-form-input>
+        </b-form-group>
       </b-form-group>
 
+      <!-- 경력 -->
       <b-form-group label="Career">
         <b-form-group>
           <b-form-input
@@ -100,10 +118,10 @@ import http from "../http-common";
           email:'', contact:'', dob:'', age : 0
         },
         acca: {
-          degree:'', school:'', dept:''
+          degree:'', school:'', dept:'', ay: null , gy: null
         },
         career: {
-          comapny:'', dept:'', duty:''
+          company:'', dept:'', duty:''
         },
         genderOptions: [
           { text: '남', value: 0 },
@@ -116,10 +134,6 @@ import http from "../http-common";
       }
     },
     methods: {
-      onSubmit(event) {
-        event.preventDefault()
-        alert(JSON.stringify(this.form))
-      },
       joinIndvUser(){
         http
           .post("/success-join", {
@@ -127,6 +141,35 @@ import http from "../http-common";
             name : this.form.name , p_EMAIL : this.form.email ,
             phone : this.form.contact ,birth_DATE : this.form.dob ,
             age: this.form.age , gender: this.form.gender
+          })
+          .then(response=>{
+            console.log(response.data);
+            this.joinCareerInfo();
+            this.joinAcdemicCareerInfo();
+          })
+          .catch(e=>{
+            console.log(e);
+          })
+      },
+      joinCareerInfo(){
+        http
+          .post("/success-join-ci", {
+            p_ID : this.form.id , p_COMPANY : this.career.company,
+            p_DEPARTMENT : this.career.dept, p_DUTY : this.career.duty
+          })
+          .then(response=>{
+            console.log(response.data);
+          })
+          .catch(e=>{
+            console.log(e);
+          })
+      },
+      joinAcdemicCareerInfo(){
+        http
+          .post("/success-join-aci", {
+            p_ID : this.form.id , degree : this.acca.degree,
+            school_NAME : this.acca.school, major : this.acca.dept,
+            admission_YEAR : this.acca.ay, graduation_YEAR : this.acca.gy
           })
           .then(response=>{
             console.log(response.data);

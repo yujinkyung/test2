@@ -12,4 +12,15 @@
 		VALUES( #{P_ID}, #{P_PW}, #{NAME}, #{P_EMAIL},
 		 #{PHONE}, #{BIRTH_DATE}, #{AGE}, #{GENDER} )
 	</insert>
+	
+	<insert id="insertCareer" parameterType="careerInfo">
+		INSERT INTO ci(P_ID, P_COMPANY, P_DEPARTMENT, P_DUTY)
+		VALUES(#{P_ID}, #{P_COMPANY}, #{P_DEPARTMENT}, #{P_DUTY})
+	</insert>
+	
+	<insert id="insertAcademic" parameterType="academicCareerInfo">
+		INSERT INTO aci(P_ID, DEGREE, SCHOOL_NAME, MAJOR, ADMISSION_YEAR, GRADUATION_YEAR)
+		VALUES(#{P_ID}, #{DEGREE}, #{SCHOOL_NAME}, #{MAJOR}, #{ADMISSION_YEAR}, #{GRADUATION_YEAR})
+	</insert>
+	
 </mapper>
