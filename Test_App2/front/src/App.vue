@@ -6,9 +6,9 @@
         <b-navbar-brand href="/">Matching Monster</b-navbar-brand>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
-            <b-nav-item href="/">Companies</b-nav-item>
+            <b-nav-item href="/#/companies">Companies</b-nav-item>
             <b-nav-item href="/">JopPosting</b-nav-item>
-            <b-nav-item href="/">Login</b-nav-item>
+            <b-nav-item href="/#/login">Login</b-nav-item>
             <b-nav-item href="/#/individual">Join</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
