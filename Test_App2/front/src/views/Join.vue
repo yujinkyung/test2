@@ -15,7 +15,7 @@
         
         <b-row align-h="center" style="padding:10px;">
             <b-col>
-                <b-button size="lg" variant="primary" href="/">기업회원가입</b-button>  
+                <b-button size="lg" variant="primary" href="/#/company">기업회원가입</b-button>  
             </b-col>
         </b-row>
     </b-card>
@@ -30,9 +30,9 @@ export default {
 <style>
 .join{
   position:absolute;
-  top:50%;
-  left:50%;
-  width: 600px;
-  margin:-150px 0 0 -300px;
+  top: 380px;
+  left: 50%;
+  width: 400px;
+  margin: -150px 0 0 -200px;
 }
 </style>

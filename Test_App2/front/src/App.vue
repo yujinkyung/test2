@@ -2,7 +2,8 @@
   <div id="app">
     <!-- navbar(헤더) -->
     <div id="nav">
-      <b-navbar type="dark" variant="primary">
+      <b-navbar toggleable="lg" type="dark" variant="primary">
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-navbar-brand href="/">Matching Monster</b-navbar-brand>
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>

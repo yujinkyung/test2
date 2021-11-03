@@ -26,7 +26,7 @@
       <b-button variant="primary"> 로그인 </b-button>
     </b-card>
 
-    <b-button variant="link" href="/#/individual">회원가입</b-button>
+    <b-button variant="link" href="/#/join">회원가입</b-button>
   </div>
 </template>
 
@@ -47,9 +47,9 @@ export default {
 <style>
 .login {
   position: absolute;
-  top: 50%;
+  top: 380px;
   left: 50%;
-  width: 600px;
-  margin: -150px 0 0 -300px;
+  width: 400px;
+  margin: -150px 0 0 -200px;
 }
 </style>

@@ -6,11 +6,11 @@
          <!-- 게시판 헤더 -->
          <b-row>
            <!-- 게시판 제목 -->
-           <b-col lg="9">
+           <b-col md="9">
              <h2 align="left">고객사 목록</h2>
            </b-col>
            <!-- 검색창 -->
-           <b-col lg="3">
+           <b-col md="3">
              <b-input-group size="sm">
                <b-form-input
                 id="filter-input"
@@ -66,10 +66,10 @@ export default {
     return{
       users:[],
       fields:[
-        {key:'co_no', label:'No.'},
+        {key:'co_NO', label:'No.'},
         {key:'company', label:'기업명'},
-        {key:'categoryID', label:'분야'},
-        {key:'sizeID', label:'기업규모'},
+        {key:'co_CATEGORY', label:'분야'},
+        {key:'co_SIZE', label:'기업규모'},
         {key:'hr', label:'HR담당자'},
         {key:'co_EMAIL', label:'E-mail'}
       ],
@@ -79,7 +79,7 @@ export default {
   methods:{
     retrieveUsers(){
       http
-        .get("/list")
+        .get("/comp-list")
         .then(response=>{
           this.users = response.data;
           console.log(response.data);

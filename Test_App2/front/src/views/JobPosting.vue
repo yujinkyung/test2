@@ -6,23 +6,23 @@
          <!-- 게시판 헤더 -->
          <b-row>
            <!-- 게시판 제목 -->
-           <b-col lg="9">
+           <b-col md="9">
              <h2 align="left">채용 공고</h2>
            </b-col>
            <!-- 검색창 -->
-           <b-col lg="3">
+           <b-col md="3">
              <b-input-group size="sm">
                <b-form-input
                 id="filter-input"
                 v-model="filter"
                 type="search"
-                placeholder="기업명/HR담당자/업종/규모"></b-form-input>
+                placeholder="기업명/제목/경력조건/채용형태"></b-form-input>
              </b-input-group>
            </b-col>
           </b-row>
          <!-- 고객사 목록 table -->
           <b-row>
-             <b-table hover :items="users" :filter="filter" :fields="fields"></b-table>
+             <b-table hover :items="contents" :filter="filter" :fields="fields"></b-table>
           </b-row>
        </b-container>
     </div>
@@ -33,27 +33,27 @@
 import http from "../http-common";
 
 export default {
-  name: 'Companies',
+  name: 'JobPosting',
   data(){
     return{
-      users:[],
+      contents:[],
       fields:[
-        {key:'co_no', label:'No.'},
+        {key:'post_NO', label:'No.'},
         {key:'company', label:'기업명'},
-        {key:'categoryID', label:'분야'},
-        {key:'sizeID', label:'기업규모'},
-        {key:'hr', label:'HR담당자'},
-        {key:'co_EMAIL', label:'E-mail'}
+        {key:'position', label:'공고 제목'},
+        {key:'qualify', label:'경력조건'},
+        {key:'employ_TYPE', label:'채용형태'},
+        {key:'regi_DT', label:'채용마감'}
       ],
       filter: ''
     }
   },
   methods:{
-    retrieveUsers(){
+    retrieveContents(){
       http
-        .get("/list")
+        .get("/job-posting")
         .then(response=>{
-          this.users = response.data;
+          this.contents = response.data;
           console.log(response.data);
         })
         .catch(e=>{
@@ -62,7 +62,7 @@ export default {
     },
   },
   mounted(){
-    this.retrieveUsers();
+    this.retrieveContents();
   }
 }
 </script>
