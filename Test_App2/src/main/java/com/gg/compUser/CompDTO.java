@@ -6,28 +6,36 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Alias("company")
+@Alias("compuser")
 @Getter
 @Setter
 @ToString
 public class CompDTO {
-	int CO_no;			// 기업 no
-	String COMPANY;		// 회사명
-	String HR;			// HR 담당자명
-	String CO_EMAIL;	// 이메일
-	String categoryID;	// 회사분야
-	String sizeID;		// 회사 규모
+	int CO_NO;
+	String CO_ID;
+	String CO_PW;
+	String COMPANY;
+	String HR;
+	String CO_EMAIL;
+	String CO_NUMBER;
+	String CATEGORY_ID;
+	String SIZE_ID;	
 	
 	public CompDTO() {}
 
-	public CompDTO(int CO_no, String COMPANY, String HR, String CO_EMAIL, String categoryID, String sizeID) {
+	public CompDTO(int CO_NO, String CO_ID, String CO_PW,
+		String COMPANY, String HR, String CO_EMAIL, String CO_NUMBER,
+		String CATEGORY_ID, String SIZE_ID) {
 		super();
-		this.CO_no = CO_no;
+		this.CO_NO = CO_NO;
+		this.CO_ID = CO_ID;
+		this.CO_PW = CO_PW;
 		this.COMPANY = COMPANY;
 		this.HR = HR;
 		this.CO_EMAIL = CO_EMAIL;
-		this.categoryID = categoryID;
-		this.sizeID = sizeID;
+		this.CO_NUMBER = CO_NUMBER;
+		this.CATEGORY_ID = CATEGORY_ID;
+		this.SIZE_ID = SIZE_ID;
 	}
 
 	public CompDTO(String COMPANY) {

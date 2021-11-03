@@ -1,22 +1,24 @@
-package com.gg.compUser;
+package com.gg.jobPosting;
+
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompServiceImpl implements CompService {
-	@Autowired
-	CompDAO dao;
+public class PostServiceImpl implements PostService{
+    @Autowired
+	PostDAO dao;
 	
 	@Autowired
 	SqlSessionTemplate session;
-
+	
 	@Override
-	public void insertComp(CompDTO dto) {
+	public List<PostDTO> postList() {
 		System.out.println("===========================");
-		System.out.println("    Comp ServiceImpl..");
+		System.out.println("    Post ServiceImpl..");
 		System.out.println("===========================");
-		dao.insertComp(dto, session);
+		return dao.postList(session);
 	}
 }

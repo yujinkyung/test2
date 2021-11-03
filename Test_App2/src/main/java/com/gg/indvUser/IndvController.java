@@ -4,13 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin
 @RestController
 public class IndvController {
 	@Autowired
 	IndvService service;
 	
-	@PostMapping("/success-join")
+	@PostMapping("/success-join-indv")
 	public void InsertIndvUser(@RequestBody IndvDTO dto) {
 		System.out.println("***Indv Controller..***");
 		System.out.println("   indv.name   : " + dto.getNAME());

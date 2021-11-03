@@ -1,22 +1,24 @@
-package com.gg.compUser;
+package com.gg.compList;
+
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompServiceImpl implements CompService {
-	@Autowired
-	CompDAO dao;
+public class CompListServiceImpl implements CompListService{
+    @Autowired
+	CompListDAO dao;
 	
 	@Autowired
 	SqlSessionTemplate session;
-
+	
 	@Override
-	public void insertComp(CompDTO dto) {
+	public List<CompListDTO> compList() {
 		System.out.println("===========================");
-		System.out.println("    Comp ServiceImpl..");
+		System.out.println("  Comp List ServiceImpl..");
 		System.out.println("===========================");
-		dao.insertComp(dto, session);
+		return dao.compList(session);
 	}
 }

@@ -15,7 +15,7 @@ public class IndvDTO {
 	String P_ID;
 	String P_PW;
 	String NAME;
-	String P_EMAIL;	// ¿Ã∏ﬁ¿œ
+	String P_EMAIL;
 	String PHONE;
 	Date BIRTH_DATE;
 	int AGE;
